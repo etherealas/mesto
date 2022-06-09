@@ -6,3 +6,6 @@
 	height: 19px;
 	background-image: url(../../../image/heart.svg);
  }
+ .element__btn-heart:hover{
+	 opacity: 0.5;
+ }

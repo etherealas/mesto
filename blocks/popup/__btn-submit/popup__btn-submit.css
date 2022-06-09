@@ -11,6 +11,9 @@
 	font-size: 18px;
 	line-height: 22px;
  }
+ .popup__btn-submit:hover {
+	 opacity: 0.8;
+ }
  @media screen and (max-width: 800px) {
 	.popup__btn-submit {
 	  font-size: 14px;

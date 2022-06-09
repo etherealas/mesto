@@ -2,7 +2,7 @@
 	max-width: 880px;
 	margin: 0 auto 40px;
 	line-height: 0;
-	border-bottom: 1px solid #545454;
+	border-bottom: 1px solid rgb(84, 84, 84);
  }
  @media screen and (max-width: 918px) {
 	.header {
