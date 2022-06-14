@@ -1,4 +1,4 @@
-.popup__name_occupation {
+.popup__input_type_occupation {
 	border: none;
 	border-bottom: 1px solid rgba(0, 0, 0, .2);
 	height: 40px;
@@ -9,7 +9,7 @@
 	margin-bottom: 48px;
  }
  @media screen and (max-width: 800px) {
-	.popup__name_occupation {
+	.popup__input_type_occupation {
 	  height: 37px;
 	  margin-bottom: 45px;
 	}
