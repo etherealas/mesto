@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./page/index.css" rel="stylesheet">
   <title>mesto</title>
+  <link rel="icon" href="image/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div class="page pages">
@@ -34,7 +35,7 @@
 	<p class="footer__copyright">&copy; 2022 Mesto Russia</p>
  </footer>
  <div class="popup popup_profile">
-	 <div class="popup__container popup__container_profile">
+	 <div class="popup__container">
 		<form class="popup__form"  name="popupForm">
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<input type="text" class="popup__input" name="inputName">
@@ -45,8 +46,8 @@
 	 </div>
  </div>
  <div class="popup popup_cards">
-	<div class="popup__container popup__container_cards">
-	  <form class="popup__form popup__form_edit"  name="popupForm">
+	<div class="popup__container">
+	  <form class="popup__form"  name="popupForm">
 		  <h2 class="popup__title">Новое место</h2>
 		  <input type="text" class="popup__input popup__input_cards" value="" name="inputTitle" id="inputTitle" placeholder="Название" required minlength="2" maxlength="30">
 		  <input class="popup__input popup__input_type_occupation popup__input_type_cards" value="" type="url" id="inpitOccupation" name="inpitOccupation" placeholder="Ссылка на картинку">

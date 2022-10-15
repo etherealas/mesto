@@ -1,27 +1,25 @@
 const content = document.querySelector('.content');
 const cardsContainer = content.querySelector('.elements');
-const formElement = content.querySelector('.popup__container');
 const profilePopup = content.querySelector('.popup_profile');
-const buttonCloseProfile = profilePopup.querySelector('.popup__btn-close');
-const formPopup = profilePopup.querySelector('.popup__container_profile');
-const formCard = content.querySelector('.popup__container_cards');
+const profilePopupForm = profilePopup.querySelector('.popup__form');
+const profilePopupBtnClose = profilePopup.querySelector('.popup__btn-close');
+const profilePopupInput = profilePopup.querySelector('.popup__input');
+const profilePopupInputOccupation = profilePopup.querySelector('.popup__input_type_occupation');
 const cardsPopup = content.querySelector('.popup_cards');
-const buttonCloseCard = cardsPopup.querySelector('.popup__btn-close');
-const inputNameCard = cardsPopup.querySelector('.popup__input');
-const inputLinkCard = cardsPopup.querySelector('.popup__input_type_occupation');
-const popupFormCards = cardsPopup.querySelector('.popup__form_edit');
-const nameInput = profilePopup.querySelector('.popup__input');
-const jobInput = profilePopup.querySelector('.popup__input_type_occupation');
+const cardsPopupBtnClose = cardsPopup.querySelector('.popup__btn-close');
+const cardsPopupInput = cardsPopup.querySelector('.popup__input');
+const cardsPopupInputOccupation = cardsPopup.querySelector('.popup__input_type_occupation');
+const cardsPopupForm = cardsPopup.querySelector('.popup__form');
 const profile = content.querySelector('.profile');
-const nameProfile = profile.querySelector('.profile__name');
-const occupationProfile = profile.querySelector('.profile__occupation');
-const editButton = content.querySelector('.profile__edit-button');
-const cardsButton = content.querySelector('.profile__add-button');
+const profileName = profile.querySelector('.profile__name');
+const profileOccupation = profile.querySelector('.profile__occupation');
+const editButton = profile.querySelector('.profile__edit-button');
+const cardsButton = profile.querySelector('.profile__add-button');
 const elementTemplate = document.querySelector('.template');
-const popupZoom = document.querySelector('.popup__image');
-const popupZoomImg= popupZoom.querySelector('.zoom__img');
-const popupZoomFigcaption = popupZoom.querySelector('.zoom__figcaption'); 
-const buttonZoomClose = popupZoom.querySelector('.popup__btn-close');
+const imagePopup = document.querySelector('.popup_image');
+const imagePopupImg = imagePopup.querySelector('.zoom__img');
+const imagePopupFigcaption = imagePopup.querySelector('.zoom__figcaption'); 
+const imagePopupBtnClose = imagePopup.querySelector('.popup__btn-close');
 
 
 const initialCards = [
@@ -53,13 +51,13 @@ const initialCards = [
 
 const render = () => {
   initialCards.forEach((item) => {
-    const currentItem = currentItemNode(item.name, item.link);
+    const currentItem = creatCard(item.name, item.link);
     cardsContainer.append(currentItem);
   });
   
 };
 
-const currentItemNode = (name, link) => {
+const creatCard = (name, link) => {
   const currentItem = elementTemplate.content.cloneNode(true);
   const currentText = currentItem.querySelector('.element__text');
   const currentLink = currentItem.querySelector('.element__img');
@@ -75,28 +73,27 @@ const currentItemNode = (name, link) => {
   const deleteBtn = currentItem.querySelector('.element__trashcan');
   deleteBtn.addEventListener('click', handleDeleteItem);
 
-  popupFormCards.addEventListener('submit', handleAddCard);
+  cardsPopupForm.addEventListener('submit', handleAddCard);
 
   currentLink.addEventListener('click', function(){
-    popupZoomFigcaption.textContent = name;
-    popupZoomImg.src = link;
-    popupZoomImg.alt = name;
-    openPopup(popupZoom);
+    imagePopupFigcaption.textContent = name;
+    imagePopupImg.src = link;
+    imagePopupImg.alt = name;
+    openPopup(imagePopup);
   });
 
   return currentItem;
 }
 
 
-
 function openPopup(popup) {
-  popup.classList.toggle('popup_opened');
+  popup.classList.add('popup_opened');
 }
 
 
-function editPopup() {
-  nameInput.value = nameProfile.textContent;
-  jobInput.value = occupationProfile.textContent;
+function openProfilePopup() {
+  profilePopupInput.value = profileName.textContent;
+  profilePopupInputOccupation.value = profileOccupation.textContent;
   openPopup(profilePopup);
 }
 
@@ -111,20 +108,20 @@ function closePopup(popup) {
 }
 
 
-function formSubmitHandler (evt) {
+function handleSubmitForm (evt) {
     evt.preventDefault();
-    nameProfile.textContent = nameInput.value;
-    occupationProfile.textContent = jobInput.value;
+    profileName.textContent = profilePopupInput.value;
+    profileOccupation.textContent = profilePopupInputOccupation.value;
     closePopup(profilePopup);
 }
 
 
 const handleAddCard =(evt) => {
   evt.preventDefault(); 
-  const card = currentItemNode(inputNameCard.value, inputLinkCard.value);
+  const card = creatCard(cardsPopupInput.value, cardsPopupInputOccupation.value);
   cardsContainer.prepend(card);
-  inputNameCard.value = '';
-  inputLinkCard.value = '';
+  cardsPopupInput.value = '';
+  cardsPopupInputOccupation.value = '';
   closePopup(cardsPopup);
 }
 
@@ -143,11 +140,9 @@ const handleDeleteItem = (e) => {
 render();
 
 
-editButton.addEventListener('click', editPopup);
-formElement.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener('click', openProfilePopup);
+profilePopupForm.addEventListener('submit', handleSubmitForm);
 cardsButton.addEventListener('click', addCards);
-buttonCloseProfile.addEventListener('click', () => closePopup(profilePopup));
-buttonCloseCard.addEventListener('click', () => closePopup(cardsPopup));
-buttonZoomClose.addEventListener("click", () => closePopup(popupZoom));
-
-
+profilePopupBtnClose.addEventListener('click', () => closePopup(profilePopup));
+cardsPopupBtnClose.addEventListener('click', () => closePopup(cardsPopup));
+imagePopupBtnClose.addEventListener("click", () => closePopup(imagePopup));
