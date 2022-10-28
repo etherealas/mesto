@@ -1,6 +1,7 @@
 const content = document.querySelector('.content');
 const cardsContainer = content.querySelector('.elements');
 const profilePopup = content.querySelector('.popup_profile');
+const popupOverlay = document.querySelector('.popup');
 const profilePopupForm = profilePopup.querySelector('.popup__form');
 const profilePopupBtnClose = profilePopup.querySelector('.popup__btn-close');
 const profilePopupInput = profilePopup.querySelector('.popup__input');
@@ -73,7 +74,6 @@ const creatCard = (name, link) => {
   const deleteBtn = currentItem.querySelector('.element__trashcan');
   deleteBtn.addEventListener('click', handleDeleteItem);
 
-  cardsPopupForm.addEventListener('submit', handleAddCard);
 
   currentLink.addEventListener('click', function(){
     imagePopupFigcaption.textContent = name;
@@ -136,6 +136,19 @@ const handleDeleteItem = (e) => {
   currentEl.remove();
 }
 
+function keyHandler(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(cardsPopup);
+    closePopup(profilePopup);
+  }
+}
+
+
+const closePopupOverlay = (evt) => {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+}
+}
 
 render();
 
@@ -143,6 +156,9 @@ render();
 editButton.addEventListener('click', openProfilePopup);
 profilePopupForm.addEventListener('submit', handleSubmitForm);
 cardsButton.addEventListener('click', addCards);
+cardsPopupForm.addEventListener('submit', handleAddCard);
 profilePopupBtnClose.addEventListener('click', () => closePopup(profilePopup));
 cardsPopupBtnClose.addEventListener('click', () => closePopup(cardsPopup));
 imagePopupBtnClose.addEventListener("click", () => closePopup(imagePopup));
+document.addEventListener('keydown', keyHandler);
+content.addEventListener('mousedown', closePopupOverlay);

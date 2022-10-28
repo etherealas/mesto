@@ -36,10 +36,12 @@
  </footer>
  <div class="popup popup_profile">
 	 <div class="popup__container">
-		<form class="popup__form"  name="popupForm">
+		<form class="popup__form"  name="popupForm" id="profile" novalidate>
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<input type="text" class="popup__input" name="inputName">
-			<input type="text" class="popup__input popup__input_type_occupation" name="inpitOccupation">
+			<input type="text" class="popup__input" name="inputName" placeholder="Имя" id="inputName" required minlength="2" maxlength="40" value="">
+			<span class="popup__span-error inputName-error"></span>
+			<input type="text" class="popup__input popup__input_type_occupation" name="inputOccupation" placeholder="О себе" id="inputOccupation" required value="" minlength="2" maxlength="200">
+			<span class="popup__span-error inputOccupation-error"></span>
 			<button type="submit" class="popup__btn-submit">Сохранить</button>
 			<button type="button" class="popup__btn-close button"><img class="popup__btn-close-img" alt="кнопка закрыть" src="./image/CloseIcon.svg"></button>
 		 </form>
@@ -47,10 +49,12 @@
  </div>
  <div class="popup popup_cards">
 	<div class="popup__container">
-	  <form class="popup__form"  name="popupForm">
+	  <form class="popup__form"  name="popupForm" id="cards" novalidate>
 		  <h2 class="popup__title">Новое место</h2>
 		  <input type="text" class="popup__input popup__input_cards" value="" name="inputTitle" id="inputTitle" placeholder="Название" required minlength="2" maxlength="30">
-		  <input class="popup__input popup__input_type_occupation popup__input_type_cards" value="" type="url" id="inpitOccupation" name="inpitOccupation" placeholder="Ссылка на картинку">
+		  <span class="popup__span-error inputTitle-error"></span>
+		  <input class="popup__input popup__input_type_occupation popup__input_type_cards" value="" type="url" id="inputLink" name="inputLink" placeholder="Ссылка на картинку">
+		  <span class="popup__span-error inputLink-error"></span>
 		  <button type="submit" class="popup__btn-submit">Сохранить</button>
 		  <button type="button" class="popup__btn-close button"><img class="popup__btn-close-img" alt="кнопка закрыть" src="./image/CloseIcon.svg"></button>
 		</form>
@@ -79,5 +83,6 @@
  </template>
 </div>
 <script src="./scripts/index.js"></script>
+<script src="./scripts/validate.js"></script>
 </body>
 </html>

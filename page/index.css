@@ -42,3 +42,7 @@
 @import url(../blocks/zoom/__figcaption/zoom__figcaption.css);
 @import url(../blocks/zoom/__img/zoom__img.css);
 @import url(../blocks/element/__trashcan/element__trashcan.css);
+@import url(../blocks/popup/__span-error/popup__span-error.css);
+@import url(../blocks/popup/__span-error/_active/popup__span-error_active.css);
+@import url(../blocks/popup/__input/_error/popup__input_error.css);
+@import url(../blocks/popup/__btn-submit/_disabled/popup__btn-submit_disabled.css);
